@@ -1,4 +1,4 @@
-chumpy @ git+https://github.com/mattloper/chumpy
+# chumpy @ git+https://github.com/mattloper/chumpy
 numpy==1.22.3
 yacs
 joblib
@@ -10,7 +10,7 @@ tensorboard
 smplx
 progress
 einops
-mmcv==1.3.9
+# mmcv==1.3.9
 timm==0.4.9
 munkres
 xtcocotools>=1.8

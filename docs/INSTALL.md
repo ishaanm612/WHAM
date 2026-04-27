@@ -34,5 +34,6 @@ conda install cudatoolkit-dev=11.3.1 -c conda-forge
 # ONLY IF your GCC version is larger than 10
 conda install -c conda-forge gxx=9.5
 
-pip install .
+# Build DPVO against the current env's torch (avoid isolated build env)
+python -m pip install --no-build-isolation .
 ```

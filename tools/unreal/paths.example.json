@@ -1,0 +1,8 @@
+{
+  "unreal_editor_cmd": "C:/Program Files/Epic Games/UE_5.4/Engine/Binaries/Win64/UnrealEditor-Cmd.exe",
+  "uproject_path": "C:/Projects/MyGame/MyGame.uproject",
+  "default_target_manny_mesh": "/Game/Characters/Mannequins/Meshes/SKM_Manny",
+  "default_wham_to_manny_ik_retargeter": "/Game/WHAM/Rigs/RTG_WHAM_to_Manny",
+  "default_source_ik_rig": "/Game/WHAM/Rigs/IKR_WHAM_Source",
+  "default_target_ik_rig": "/Game/Characters/Mannequins/Rigs/IKR_Manny"
+}

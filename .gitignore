@@ -1,0 +1,6 @@
+inputs/
+output/
+dataset/
+examples/
+**/__pycache__/
+checkpoints/
