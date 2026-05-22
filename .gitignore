@@ -4,3 +4,6 @@ dataset/
 examples/
 **/__pycache__/
 checkpoints/
+
+# User-exported Epic Mannequin FBX (see third_party/mannequin/README.md)
+third_party/mannequin/*.fbx

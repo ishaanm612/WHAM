@@ -180,6 +180,32 @@ python tools/unreal/run_wham_to_manny_pipeline.py \
   --processes 4
 ```
 
+#### 5) Export retargeted Manny animations to FBX on disk (headless)
+
+After IK Rigs, IK Retargeter, and retarget are set up, batch-export `AnimSequence` assets from the retarget output folder using `export_batch.py` (same Unreal API as [bedlam2_retargeting](https://github.com/PerceivingSystems/bedlam2_retargeting) `export_fbx.py`, without content-browser selection):
+
+```bash
+python tools/unreal/export_batch.py \
+  --paths-json tools/unreal/paths.json \
+  --source-root /Game/WHAM/Retargeted/Manny \
+  --host-export-dir /abs/path/manny_fbx_out \
+  --num-batches 4 \
+  --processes 2
+```
+
+Or run import + retarget + export in one command:
+
+```bash
+python tools/unreal/run_wham_to_manny_pipeline.py \
+  --paths-json tools/unreal/paths.json \
+  --input-dir output/demo/IMG_9732/unreal_fbx \
+  --host-export-dir /abs/path/manny_fbx_out
+```
+
+End-to-end documentation (including a reference clone of `bedlam2_retargeting` and a `Makefile`): [docs/BEDLAM2_MANNY_PIPELINE.md](docs/BEDLAM2_MANNY_PIPELINE.md).
+
+**Linux-only (no Unreal):** retarget WHAM → Mannequin-style FBX with headless Blender — [docs/LINUX_MANNY_RETARGET.md](docs/LINUX_MANNY_RETARGET.md).
+
 Notes:
 - The Unreal workers use environment variables for robust argument passing.
 - Retargeting expects a preconfigured IK Retargeter (chain mapping + preview setup).

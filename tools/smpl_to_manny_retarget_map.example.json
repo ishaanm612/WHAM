@@ -1,0 +1,33 @@
+{
+  "_description": "Example SMPL (WHAM Unity template) to UE5 Mannequin-style bone map. Target names follow common UE5 Mannequin/SKM_Manny naming; adjust to match your actual Mannequin FBX (use Blender to list armature bone names).",
+  "version": 1,
+  "bone_pairs": [
+    { "source": "Pelvis", "target": "pelvis" },
+    { "source": "L_Hip", "target": "thigh_l" },
+    { "source": "R_Hip", "target": "thigh_r" },
+    { "source": "Spine1", "target": "spine_01" },
+    { "source": "L_Knee", "target": "calf_l" },
+    { "source": "R_Knee", "target": "calf_r" },
+    { "source": "Spine2", "target": "spine_02" },
+    { "source": "L_Ankle", "target": "foot_l" },
+    { "source": "R_Ankle", "target": "foot_r" },
+    { "source": "Spine3", "target": "spine_03" },
+    { "source": "L_Foot", "target": "ball_l" },
+    { "source": "R_Foot", "target": "ball_r" },
+    { "source": "Neck", "target": "neck_01" },
+    { "source": "L_Collar", "target": "clavicle_l" },
+    { "source": "R_Collar", "target": "clavicle_r" },
+    { "source": "Head", "target": "head" },
+    { "source": "L_Shoulder", "target": "upperarm_l" },
+    { "source": "R_Shoulder", "target": "upperarm_r" },
+    { "source": "L_Elbow", "target": "lowerarm_l" },
+    { "source": "R_Elbow", "target": "lowerarm_r" },
+    { "source": "L_Wrist", "target": "hand_l" },
+    { "source": "R_Wrist", "target": "hand_r" }
+  ],
+  "notes": [
+    "L_Hand/R_Hand and extra Mannequin finger bones: leave at bind pose in v0 or add pairs after inspecting target FBX.",
+    "If your target uses spine_04/spine_05, remap SMPL spines to the closest three bones.",
+    "T-pose vs A-pose mismatch may require a pre-roll in Blender on the target rig (edit mode) or per-bone offset matrix (future work)."
+  ]
+}

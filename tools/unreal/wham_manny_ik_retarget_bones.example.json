@@ -1,0 +1,36 @@
+{
+  "_description": "Reference bone names for WHAM/SMPL (Unity FBX template) for IK Rig chains. UE names may differ; map chains in IK Retargeter to Epic Manny.",
+  "source_smpl_joint_order": [
+    "Pelvis",
+    "L_Hip",
+    "R_Hip",
+    "Spine1",
+    "L_Knee",
+    "R_Knee",
+    "Spine2",
+    "L_Ankle",
+    "R_Ankle",
+    "Spine3",
+    "L_Foot",
+    "R_Foot",
+    "Neck",
+    "L_Collar",
+    "R_Collar",
+    "Head",
+    "L_Shoulder",
+    "R_Shoulder",
+    "L_Elbow",
+    "R_Elbow",
+    "L_Wrist",
+    "R_Wrist",
+    "L_Hand",
+    "R_Hand"
+  ],
+  "suggested_retarget_chains": {
+    "spine": ["Pelvis", "Spine1", "Spine2", "Spine3", "Neck", "Head"],
+    "left_arm": ["L_Collar", "L_Shoulder", "L_Elbow", "L_Wrist", "L_Hand"],
+    "right_arm": ["R_Collar", "R_Shoulder", "R_Elbow", "R_Wrist", "R_Hand"],
+    "left_leg": ["L_Hip", "L_Knee", "L_Ankle", "L_Foot"],
+    "right_leg": ["R_Hip", "R_Knee", "R_Ankle", "R_Foot"]
+  }
+}

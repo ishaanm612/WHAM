@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Run import + retarget stages for WHAM Unreal FBX files.
+"""Run import, retarget, and optional Manny FBX export for WHAM Unreal FBX files.
 
-This script mirrors BEDLAM's two-stage batch flow:
+Mirrors the BEDLAM-style batch flow:
 1) Import FBX files into Unreal
 2) Retarget imported AnimSequence assets to Manny/Quinn
+3) Optional: export retargeted AnimSequence assets to host ``.fbx`` (headless)
 """
 
 from __future__ import annotations
@@ -81,10 +82,35 @@ def main() -> None:
         default=False,
         help="Overwrite existing retargeted output assets when names collide",
     )
+    parser.add_argument(
+        "--host-export-dir",
+        type=Path,
+        default=None,
+        help="If set, run export_batch after retarget: host directory for Manny .fbx files",
+    )
+    parser.add_argument(
+        "--export-mesh",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="With --host-export-dir: pass --export-mesh to export_batch (preview mesh in FBX)",
+    )
+    parser.add_argument(
+        "--export-batches",
+        type=int,
+        default=4,
+        help="Number of export worker batches (default: 4)",
+    )
+    parser.add_argument(
+        "--export-processes",
+        type=int,
+        default=2,
+        help="Parallel Unreal processes for export (default: 2)",
+    )
     args = parser.parse_args()
 
     import_script = Path(__file__).with_name("import_batch.py")
     retarget_script = Path(__file__).with_name("retarget_batch.py")
+    export_script = Path(__file__).with_name("export_batch.py")
 
     import_cmd = [
         sys.executable,
@@ -127,6 +153,27 @@ def main() -> None:
     if args.overwrite_output:
         retarget_cmd.append("--overwrite-output")
     _run(retarget_cmd)
+
+    if args.host_export_dir is not None:
+        if not export_script.exists():
+            raise FileNotFoundError(f"export_batch not found: {export_script}")
+        export_cmd = [
+            sys.executable,
+            str(export_script),
+            "--paths-json",
+            str(args.paths_json),
+            "--source-root",
+            args.output_root,
+            "--host-export-dir",
+            str(args.host_export_dir.resolve()),
+            "--num-batches",
+            str(args.export_batches),
+            "--processes",
+            str(args.export_processes),
+        ]
+        if args.export_mesh:
+            export_cmd.append("--export-mesh")
+        _run(export_cmd)
 
     print("[done] WHAM->Manny automation pipeline completed")
 
